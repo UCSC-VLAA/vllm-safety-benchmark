@@ -43,8 +43,8 @@ We host our datasets [here](https://huggingface.co/datasets/PahaII/vllm_safety_e
         ├── misleading-attack.json
         ├── sketchy-vqa-challenging.json
         └── oodcv-vqa-counterfactual.json
-    ├── redteaming-mislead # Contains the test data for redteaming tasks
-        ├── redteaming_attack
+    ├── redteaming # Contains the test data for redteaming tasks
+        ├── misleading_attack
             ├── gaussian_noise
             ├── mixattack_eps32
             ├── mixattack_eps64
@@ -52,6 +52,7 @@ We host our datasets [here](https://huggingface.co/datasets/PahaII/vllm_safety_e
             ├── sinattack_eps64_coconut
             ├── sinattack_eps64_spaceship
             └── annotation.json
+        ├── jailbreak_vit # adversarial images for jailbreaking VLLM through ViT
         └── jailbreak_llm # adversarial suffixes for jailbreaking VLLM through LLM
     └── ood # Contains the test data for OOD scenarios
         ├── sketchy-vqa
@@ -68,20 +69,18 @@ For $\texttt{OODCV-VQA}$ and its counterfactual version, please download images 
 For $\texttt{Sketchy-VQA}$ and its challenging version, please first download images from [here](https://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/sketches_png.zip), put the zip file into `ood/sketchy-vqa/skechydata/`, then unzip it.
 
 ### Redteaming Attack
-For the proposed misleading attack, the full datasets and all trained adversarial examples are in `redteaming-mislead`, including images with gaussian noise, Sin.Attack and MixAttack with two pertubation budgets $\epsilon=32/255$ (eps32) or $\epsilon=64/255$ (eps64).
+For the proposed misleading attack, the full datasets and all trained adversarial examples are in `redteaming/misleading_attack`, including images with gaussian noise, Sin.Attack and MixAttack with two pertubation budgets $\epsilon=32/255$ (eps32) or $\epsilon=64/255$ (eps64).
 
 For jailbreaking methods, please refer to their respective repositories for more dataset details: [Jailbreak through ViT](https://github.com/Unispac/Visual-Adversarial-Examples-Jailbreak-Large-Language-Models), [Jailbreak through LLM](https://github.com/llm-attacks/llm-attacks).
 
 ## Testing
-You can first test all models using `model_testing_zoo.py`, note to specify the cache directory inside the file.
+Before you start, make sure you have modified the `CACHE_DIR` (where you store all your model weights) and `DATA_DIR` (where you store the benchmark data) in `baselines/config.json` according to your local envirnment.
 
 ```bash
 cd baselines
 python ../model_testing_zoo.py --model_name LLaVA
 ```
 Choose `--model_name` from ["LlamaAdapterV2", "MiniGPT4", "MiniGPT4v2", "LLaVA", "mPLUGOwl", "mPLUGOwl2", "PandaGPT", "InstructBLIP2", "Flamingo", "LLaVAv1.5", "LLaVAv1.5-13B", "LLaVA_llama2-13B", "MiniGPT4_llama2", "Qwen-VL-Chat", "MiniGPT4_13B", "InstructBLIP2-FlanT5-xl", "InstructBLIP2-FlanT5-xxl",  "InstructBLIP2-13B", "CogVLM", "Fuyu", "InternLM"].
-
-Before you start, make sure you have modified the `CACHE_DIR` (where you store all your model weights) and `DATA_DIR` (where you store the benchmark data) in `baselines/config.json` according to your local envirnment.
 
 ### $\texttt{OODCV-VQA}$ and its Counterfactual Variant
 
@@ -128,7 +127,7 @@ For testing the VLLMs:
 ```bash
 cd baselines
 
-python ../safety_evaluations/redteaming/misleading_vision_attack/test_misleading.py --image_folder redteaming/misleading_attack/mixattack_eps64 --output_name misleading_attack_eps64 --human_annot_path redteaming-mislead/annotation.json
+python ../safety_evaluations/redteaming/misleading_vision_attack/test_misleading.py --image_folder redteaming/misleading_attack/mixattack_eps64 --output_name misleading_attack_eps64 --human_annot_path redteaming/misleading_attack/annotation.json
 ```
 
 ### Jailbreaking Methods
