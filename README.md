@@ -150,4 +150,4 @@ If you find our work useful to your research and applications, please consider c
 ```
 
 ## Acknowledgement
-We thank Center for AI Safety (CAIS) for supporting our computing needs. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the sponsors.
+This work is partially supported by a gift from Open Philanthropy. We thank Center for AI Safety for supporting our computing needs. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the sponsors.
