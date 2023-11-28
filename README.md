@@ -10,7 +10,7 @@
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/LICENSE)
 [![Data License](https://img.shields.io/badge/Data%20License-CC%20By%20NC%204.0-red.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/DATA_LICENSE)
 
-Our paper is online now: https://arxiv.org/abs/2311.xxxx
+Our paper is online now: https://arxiv.org/abs/2311.16101
 
 <p align="center">
   <img src="assets/teaser.png" width="1080">
@@ -144,7 +144,7 @@ If you find our work useful to your research and applications, please consider c
 @article{tu2023how,
   title={How Many Unicorns Are In This Image? A Safety Evaluation Benchmark For Vision LLMs},
   author={Tu, Haoqin and Cui, Chenhang and Wang, Zijun and Zhou, Yiyang and Zhao, Bingchen and Han, Junlin and Zhou, Wangchunshu and Yao, Huaxiu and Xie, Cihang},
-  journal={arXiv preprint arXiv:2311.xxxx},
+  journal={arXiv preprint arXiv:2311.16101},
   year={2023}
 }
 ```
